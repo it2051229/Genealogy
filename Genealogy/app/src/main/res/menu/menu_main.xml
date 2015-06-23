@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item
+        android:id="@+id/menuAddName"
+        android:title="Add Name"
+        />
+    <item
+        android:id="@+id/menuExportNames"
+        android:title="Export Names"
+        />
+    <item
+        android:id="@+id/menuImportNames"
+        android:title="Import Names"
+        />
+    <item
+        android:id="@+id/menuQuestionAndAnswer"
+        android:title="Question and Answer"
+        />
+</menu>

@@ -1,0 +1,109 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="it2051229.genealogy.AddNameActivity"
+    android:id="@+id/AddNameActivityLinearLayout"
+    android:focusableInTouchMode="true">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextName"
+        android:autoText="false"
+        android:hint="Name" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editTextSpouseName"
+            android:hint="Spouse name (optional)"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="..."
+            android:id="@+id/buttonSearchSpouseName"
+            android:onClick="buttonSearchSpouseNameTapped" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editTextDadName"
+            android:hint="Dad&apos;s name (optional)"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="..."
+            android:id="@+id/buttonSearchDadName"
+            android:onClick="buttonSearchDadNameTapped" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextMomName"
+            android:inputType="textPersonName"
+            android:hint="Mom&apos;s name (optional)"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="..."
+            android:id="@+id/buttonSearchMomName"
+            android:onClick="buttonSearchMomNameTapped" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollViewNotes"
+        android:layout_weight="1" >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/editTextNotes"
+            android:hint="Notes (optional)" />
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Name"
+        android:id="@+id/buttonAddName"
+        android:layout_gravity="center_horizontal"
+        android:nestedScrollingEnabled="false"
+        android:onClick="buttonAddNameTapped" />
+</LinearLayout>
