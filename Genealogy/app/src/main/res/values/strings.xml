@@ -9,5 +9,6 @@
     <string name="title_activity_details">Person Details</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_question_answer">Question and Answer</string>
+    <string name="title_activity_relate_names">Find Relationship</string>
 
 </resources>

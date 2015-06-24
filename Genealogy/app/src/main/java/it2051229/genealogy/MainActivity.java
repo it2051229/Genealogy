@@ -233,6 +233,10 @@ public class MainActivity extends ActionBarActivity {
                 menuAddNameTapped();
                 break;
 
+            case R.id.menuRelateNames:
+                menuRelateNamesTapped();
+                break;
+
             case R.id.menuExportNames:
                 menuExportNamesTapped();
                 break;
@@ -256,6 +260,15 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, AddNameActivity.class);
         intent.putExtra("genealogy", genealogy);
         startActivityForResult(intent, Application.ADD_NAME_ACTIVITY_REQUEST_CODE);
+    }
+
+    /**
+     * Show the activity that would allow to relate 2 names
+     */
+    private void menuRelateNamesTapped() {
+        Intent intent = new Intent(this, RelateNamesActivity.class);
+        intent.putExtra("genealogy", genealogy);
+        startActivity(intent);
     }
 
     /**

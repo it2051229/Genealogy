@@ -38,6 +38,10 @@
             android:name=".QuestionAnswerActivity"
             android:label="@string/title_activity_question_answer" >
         </activity>
+        <activity
+            android:name=".RelateNamesActivity"
+            android:label="@string/title_activity_relate_names" >
+        </activity>
     </application>
 
 </manifest>

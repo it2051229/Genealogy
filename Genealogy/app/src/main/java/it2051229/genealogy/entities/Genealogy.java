@@ -316,4 +316,42 @@ public class Genealogy implements Serializable {
 
         return grandChildren;
     }
+
+    /**
+     * Generate a graph between relatives
+     */
+    public Graph buildGraph() {
+        Graph graph = new Graph();
+
+        // Add all names
+        for(Map.Entry<String, Person> entry : people.entrySet()) {
+            Person person = entry.getValue();
+            graph.add(person.getName());
+        }
+
+        // Connect the names
+        for(Map.Entry<String, Person> entry : people.entrySet()) {
+            Person person = entry.getValue();
+
+            if(person.getDad() != null) {
+                graph.connect(person.getName(), person.getDad().getName(), "Dad");
+            }
+
+            if(person.getMom() != null) {
+                graph.connect(person.getName(), person.getMom().getName(), "Mom");
+            }
+
+            if(person.getSpouse() != null) {
+                graph.connect(person.getName(), person.getSpouse().getName(), "Spouse");
+            }
+
+            ArrayList<String> children = getChildrenOf(person.getName());
+
+            for(String childName : children) {
+                graph.connect(person.getName(), childName, "Child");
+            }
+        }
+
+        return graph;
+    }
 }

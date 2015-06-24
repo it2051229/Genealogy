@@ -6,6 +6,10 @@
         android:title="Add Name"
         />
     <item
+        android:id="@+id/menuRelateNames"
+        android:title="Find Relationship"
+        />
+    <item
         android:id="@+id/menuExportNames"
         android:title="Export Names"
         />
