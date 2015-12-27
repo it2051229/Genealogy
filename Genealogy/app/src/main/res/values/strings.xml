@@ -10,5 +10,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_question_answer">Question and Answer</string>
     <string name="title_activity_relate_names">Find Relationship</string>
+    <string name="title_activity_build_family_tree">Build Family Tree</string>
 
 </resources>

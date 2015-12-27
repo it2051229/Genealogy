@@ -237,6 +237,10 @@ public class MainActivity extends ActionBarActivity {
                 menuRelateNamesTapped();
                 break;
 
+            case R.id.menuBuildFamilyTree:
+                menuBuildFamilyTreeTapped();
+                break;
+
             case R.id.menuExportNames:
                 menuExportNamesTapped();
                 break;
@@ -267,6 +271,15 @@ public class MainActivity extends ActionBarActivity {
      */
     private void menuRelateNamesTapped() {
         Intent intent = new Intent(this, RelateNamesActivity.class);
+        intent.putExtra("genealogy", genealogy);
+        startActivity(intent);
+    }
+
+    /**
+     * Show the activity that would allow to build the family tree of a person
+     */
+    private void menuBuildFamilyTreeTapped() {
+        Intent intent = new Intent(this, BuildFamilyTreeActivity.class);
         intent.putExtra("genealogy", genealogy);
         startActivity(intent);
     }

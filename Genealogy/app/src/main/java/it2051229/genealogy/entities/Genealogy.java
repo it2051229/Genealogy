@@ -318,6 +318,49 @@ public class Genealogy implements Serializable {
     }
 
     /**
+     * Build the family tree of a person starting from that person going down below
+     */
+    public String buildFamilyTreeOf(String name) {
+        if(name.isEmpty() || !people.containsKey(name)) {
+            return "";
+        }
+
+        StringBuilder treeBuilder = new StringBuilder();
+        buildFamilyTreeOf(name, treeBuilder, "", true);
+
+        return treeBuilder.toString();
+    }
+
+    /**
+     * A helper method to recursively build the tree of a person
+     */
+    private void buildFamilyTreeOf(String name, StringBuilder treeBuilder, String prefix, boolean isTail) {
+        String spouseName = "";
+
+        if(people.get(name).getSpouse() != null) {
+            spouseName = people.get(name).getSpouse().getName();
+        }
+
+        if(spouseName.isEmpty()) {
+            treeBuilder.append(prefix + (isTail ? "└── " : "├── ") + name + "\n");
+        } else {
+            treeBuilder.append(prefix + (isTail ? "└── " : "├── ") + name + " & " + spouseName + "\n");
+        }
+
+        ArrayList<String> children = getChildrenOf(name);
+
+        for(int i = 0; i < children.size() - 1; i++) {
+            String childName = children.get(i);
+            buildFamilyTreeOf(childName, treeBuilder, prefix + (isTail ? "    " : "│   "), false);
+        }
+
+        if(!children.isEmpty()) {
+            String childName = children.get(children.size() - 1);
+            buildFamilyTreeOf(childName, treeBuilder, prefix + (isTail ? "    " : "│   "), true);
+        }
+    }
+
+    /**
      * Generate a graph between relatives
      */
     public Graph buildGraph() {

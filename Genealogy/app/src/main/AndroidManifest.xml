@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="it2051229.genealogy" >
+    package="it2051229.genealogy">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -8,10 +8,10 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,28 +20,25 @@
         </activity>
         <activity
             android:name=".AddNameActivity"
-            android:label="@string/title_activity_add_name" >
-        </activity>
+            android:label="@string/title_activity_add_name"></activity>
         <activity
             android:name=".SearchNameActivity"
-            android:label="@string/title_activity_search_name" >
-        </activity>
+            android:label="@string/title_activity_search_name"></activity>
         <activity
             android:name=".UpdateNameActivity"
-            android:label="@string/title_activity_update_name" >
-        </activity>
+            android:label="@string/title_activity_update_name"></activity>
         <activity
             android:name=".DetailsActivity"
-            android:label="@string/title_activity_details" >
-        </activity>
+            android:label="@string/title_activity_details"></activity>
         <activity
             android:name=".QuestionAnswerActivity"
-            android:label="@string/title_activity_question_answer" >
-        </activity>
+            android:label="@string/title_activity_question_answer"></activity>
         <activity
             android:name=".RelateNamesActivity"
-            android:label="@string/title_activity_relate_names" >
-        </activity>
+            android:label="@string/title_activity_relate_names"></activity>
+        <activity
+            android:name=".BuildFamilyTreeActivity"
+            android:label="@string/title_activity_build_family_tree"></activity>
     </application>
 
 </manifest>

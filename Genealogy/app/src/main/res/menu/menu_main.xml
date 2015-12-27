@@ -10,6 +10,10 @@
         android:title="Find Relationship"
         />
     <item
+        android:id="@+id/menuBuildFamilyTree"
+        android:title="Buid Family Tree"
+        />
+    <item
         android:id="@+id/menuExportNames"
         android:title="Export Names"
         />
