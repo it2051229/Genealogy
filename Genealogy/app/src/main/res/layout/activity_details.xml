@@ -37,12 +37,33 @@
         android:layout_height="match_parent"
         android:id="@+id/scrollView" >
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Details"
-            android:id="@+id/textViewDetails"
-            android:textIsSelectable="true"
-            android:textColor="@android:color/black" />
+            android:orientation="vertical"
+            android:id="@+id/linearLayoutDetails">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Details"
+                android:id="@+id/textViewDetails"
+                android:textIsSelectable="true"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageViewPicture"
+                android:layout_gravity="top" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Take Photo"
+                android:id="@+id/buttonTakePhoto"
+                android:layout_gravity="center_horizontal"
+                android:onClick="buttonTakePhotoTapped" />
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

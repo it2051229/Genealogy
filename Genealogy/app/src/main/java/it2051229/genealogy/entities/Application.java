@@ -9,4 +9,5 @@ public class Application {
     public static final int SEARCH_NAME_ACTIVITY_REQUEST_CODE = 2;
     public static final int UPDATE_NAME_ACTIVITY_REQUEST_CODE = 3;
     public static final int QUESTION_AND_ANSWER_ACTIVITY_REQUEST_CODE = 4;
+    public static final int CAMERA_ACTIVITY_REQUEST_CODE = 5;
 }
