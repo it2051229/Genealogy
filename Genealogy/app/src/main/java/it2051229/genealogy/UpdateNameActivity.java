@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import it2051229.genealogy.entities.Application;
@@ -117,7 +118,9 @@ public class UpdateNameActivity extends ActionBarActivity {
             return;
         }
 
-        // Validation complete, update the person's properties
+        // Validation complete, update the person's properties and photo if it exists
+        new File(Application.DIRECTORY, person.getName() + ".jpg").renameTo(new File(Application.DIRECTORY, name + ".jpg"));
+
         if(!genealogy.updateName(person.getName(), name)) {
             Toast.makeText(this, "Oh snap! Developer error.", Toast.LENGTH_SHORT).show();
             return;

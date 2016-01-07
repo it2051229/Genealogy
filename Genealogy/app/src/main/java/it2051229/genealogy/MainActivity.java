@@ -51,6 +51,9 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize the directory for the genealogy files
+        Application.DIRECTORY.mkdirs();
+
         // Initialize the list view where to display the added names
         arrayListNames = new ArrayList<>();
         arrayAdapterNames = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayListNames);
@@ -101,7 +104,6 @@ public class MainActivity extends ActionBarActivity {
      * Load data from internal file
      */
     public void loadData() {
-
         try {
             FileInputStream fis = openFileInput("data.dat");
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -189,6 +191,7 @@ public class MainActivity extends ActionBarActivity {
             // Handle the removal of the name upon delete
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                // Delete the person
                 if(!genealogy.removePerson(name)) {
                     Toast.makeText(MainActivity.this, "Oh snap! developer error.", Toast.LENGTH_SHORT).show();
                     return;
@@ -198,6 +201,11 @@ public class MainActivity extends ActionBarActivity {
                 arrayAdapterNames.notifyDataSetChanged();
 
                 saveData();
+
+                // Delete the photo
+                if(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+                    new File(Application.DIRECTORY, genealogy.normalizeName(name) + ".jpg").delete();
+                }
             }
         }).setNegativeButton("No", null).show();
     }
@@ -295,15 +303,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // Create the file
-        String path = Environment.getExternalStorageDirectory().toString();
-        File directory = new File(path + "/Genealogy");
-        directory.mkdirs();
-
-        File file = new File(directory, "Exported Names.txt");
-
-        if(file.exists()) {
-            file.delete();
-        }
+        File file = new File(Application.DIRECTORY, "Exported Names.txt");
+        file.delete();
 
         try {
             PrintWriter outFile = new PrintWriter(new FileWriter(file));
@@ -369,11 +370,7 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 // Find the file, make sure it exists
-                String path = Environment.getExternalStorageDirectory().toString();
-                File directory = new File(path + "/Genealogy");
-                directory.mkdirs();
-
-                File file = new File(directory, "Exported Names.txt");
+                File file = new File(Application.DIRECTORY, "Exported Names.txt");
 
                 if (!file.exists()) {
                     Toast.makeText(MainActivity.this, "Failed to find 'Exported Names.txt'.", Toast.LENGTH_SHORT).show();

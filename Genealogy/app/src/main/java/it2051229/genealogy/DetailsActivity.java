@@ -105,12 +105,14 @@ public class DetailsActivity extends ActionBarActivity {
      * Load the picture of the person
      */
     private void showPicture() {
+        // Stop if there are no SD card
+        if(!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            return;
+        }
+
         // Load the picture if it exists
         ImageView imageView = (ImageView)findViewById(R.id.imageViewPicture);
-
-        String path = Environment.getExternalStorageDirectory().toString();
-        File directory = new File(path + "/Genealogy");
-        File imageFile = new File(directory, person.getName() + ".jpg");
+        File imageFile = new File(Application.DIRECTORY, person.getName() + ".jpg");
 
         if(imageFile.exists()) {
             try {
@@ -138,16 +140,12 @@ public class DetailsActivity extends ActionBarActivity {
     public void buttonTakePhotoTapped(View view) {
         // Stop if there are no SD card
         if(!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            Toast.makeText(this, "There are no external storage where to export data.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "There are no external storage where to save photos.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Initialize the filename to use where the camera will save the captured photo
-        String path = Environment.getExternalStorageDirectory().toString();
-        File directory = new File(path + "/Genealogy");
-        directory.mkdirs();
-
-        File imageFile = new File(directory, person.getName() + ".jpg");
+        File imageFile = new File(Application.DIRECTORY, "temp");
         imageFile.delete();
 
         try {
@@ -178,8 +176,23 @@ public class DetailsActivity extends ActionBarActivity {
             String name = intent.getExtras().getString("name");
             ((TextView) findViewById(R.id.textViewName)).setText(name);
             person = genealogy.getPerson(name);
+
             showDetails();
+            showPicture();
         } else if(requestCode == Application.CAMERA_ACTIVITY_REQUEST_CODE) {
+            File imageFile = new File(Application.DIRECTORY, "temp");
+
+            if (resultCode == RESULT_OK) {
+                // Delete any existing photo of the person
+                new File(Application.DIRECTORY, person.getName() + ".jpg").delete();
+
+                // Rename the temp file to the right name of the person as a replacement
+                imageFile.renameTo(new File(Application.DIRECTORY, person.getName() + ".jpg"));
+            } else {
+                // Delete any temp file if photo taking is cancelled or error occured
+                imageFile.delete();
+            }
+
             showPicture();
         }
     }
